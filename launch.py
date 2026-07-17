@@ -4,13 +4,26 @@ import shutil
 import tomllib
 import platform
 import sys
+import re
 
 
 # Put the absolute full config.toml path here
-config_path = r"    PATH HERE    "
+config_path = r"C:\Users\Hojin\Documents\StepmaniaAssets\itgmania-helpers\config.toml"
 
 
 system = platform.system()
+
+def read_file(path, until=None): 
+    lines = []
+    with open(path, 'r') as f: 
+        if until is not None: 
+            for line in f: 
+                lines.append(line)
+                if line.strip() == until: 
+                    break
+        else: 
+            lines = f.readlines()
+    return lines
 
 def getch(): 
     if system == 'Windows': 
@@ -39,8 +52,7 @@ def edit_settings(path, settings_dict, mode = None):
     assert os.path.exists(path), f'{path} not found'
     if mode is not None: 
         settings_dict = settings_dict[mode]
-    with open(path, 'r') as f:
-        lines = f.readlines()
+    lines = read_file(path, settings_dict.get('until'))
     with open(path, 'w') as f:
         for line in lines:
             found = False
@@ -68,19 +80,38 @@ def link_folder(sympath, link_dict, mode = None):
     
     if system == 'Windows': 
         result = subprocess.run([
-                'powershell', 
-                '-Command', 
-                rf'New-Item -ItemType Junction -Path {sympath} -Target {target_path}'
-            ], capture_output=True)
+            'powershell', 
+            '-Command', 
+            rf'New-Item -ItemType Junction -Path {sympath} -Target {target_path}'
+        ], capture_output=True)
         if result.returncode != 0: 
             print(result.stderr.decode())
     else: 
         os.symlink(target_path, sympath)
 
+def matchreplace(path, match_dict, mode = None): 
+    assert os.path.exists(path), f'{path} not found'
+    if mode is not None: 
+        match_dict = match_dict[mode]
+    
+    content = ''.join(read_file(path, match_dict.get('until')))
+    
+    for m in match_dict['list']: 
+        result = re.search(m['match'], content)
+        if result is None:
+            print(f"WARNING: no match for pattern {m['match']!r} in {path}", flush=True)
+            continue
+        content = content[:result.start()] + m['replace'] \
+                    + content[result.end():]
+    
+    with open(path, 'w') as f: 
+        f.write(content)
+
 actions = {
     'settings': edit_settings, 
     'replacement': replace_file, 
-    'link': link_folder
+    'link': link_folder, 
+    'matchreplace': matchreplace
 }
 
 def get_action_str(mod): 

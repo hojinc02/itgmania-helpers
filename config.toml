@@ -3,29 +3,29 @@ d = 'DDR'
 i = 'ITG'
 e = '__exit'  # for exiting. not a real mode
 
-# Use full paths
+
 [GamePath]
 # Use single quotes for Windows paths with \ slashes
-path = ' ... ITGmania.exe'
+path = 'C:\Games\ITGmania\Program\ITGmania.exe'
 
 # Add a new [[files]] block for each file you want to modify
 [[files]]
-path = ' ... AppData\Roaming\ITGmania\Save\Preferences.ini'
+path = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\Preferences.ini'
 [files.settings]
-FullscreenIsBorderlessWindow = "1"  # You can put settings that don't save normally too
+FullscreenIsBorderlessWindow = "1"
 
 [[files]]  
-path = ' ... AppData\Roaming\ITGmania\Themes\Simply Love\Scripts\SL_Init.lua'
+path = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Themes\Simply Love\Scripts\SL_Init.lua'
 mode_required = true  # supply for mode specific behavior
 [files.replacement]
-replacement_path = ' ... AppData\Roaming\ITGmania\Themes\Simply Love\Scripts\__{mode}__SL_Init.lua'  # {mode} will be replaced with selected mode
+replacement_path = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Themes\Simply Love\Scripts\__{mode}__SL_Init.lua'  # {mode} will be replaced with selected mode
 
 [[files]]  # add dir to recursively modify files
 path = 'Simply Love UserPrefs.ini'
-dir = ' ... AppData\Roaming\ITGmania\Save\LocalProfiles'
+dir = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\LocalProfiles'
 mode_required = true
 [files.settings.DDR]
-NoteSkin = 'sch-ddr'  # NoteSkin name is all lower case
+NoteSkin = 'sch-ddr'
 ShowExScore = 'false'
 ShowFaPlusPane = 'false'
 ShowFaPlusWindow = 'false'
@@ -36,7 +36,25 @@ ShowFaPlusPane = 'true'
 ShowFaPlusWindow = 'true'
 
 [[files]]
-path = ' ... AppData\Roaming\ITGmania\Songs'  # Game songs location
+path = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Songs'
 mode_required = true
 [files.link]
-target_path = ' ... Songs\{mode}'  # Real songs location
+target_path = 'C:\Users\Hojin\Documents\StepmaniaAssets\Songs\{mode}'
+
+#[[files]]
+#path = 'Stats.xml'
+#dir = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\LocalProfiles'
+#[files.matchreplace]
+#until = '</GeneralData>'  # Read file until. Optional
+#[[files.matchreplace.list]]  # Add more of these to regex match replace more things
+#match = '(?s)<DefaultModifiers>(.+?)</DefaultModifiers>'
+#replace = '<DefaultModifiers></DefaultModifiers>'
+
+#[[files]]
+#path = 'Casual-Stats.xml'
+#dir = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\LocalProfiles'
+#[files.matchreplace]
+#until = '</GeneralData>'
+#[[files.matchreplace.list]]
+#match = '(?s)<DefaultModifiers>(.+?)</DefaultModifiers>'
+#replace = '<DefaultModifiers></DefaultModifiers>'
