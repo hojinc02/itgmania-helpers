@@ -5,20 +5,24 @@ Launch scripts and assets for quality of life.
 - Download repo as zip
 
 ![repo_zip](github_pics/github_zip.png)
+
 - Install Python >3.11
     - Check version with `python --version`
 
 ### Windows shortcut
 You can setup a shortcut on Windows for easy launching of the script. Just write `python <full_path_to_launch.py>`. 
+
 ![windows_shortcut](github_pics/shortcut.png)
 
 Optionally change the icon as well. 
+
 ![shortcut_icon](github_pics/shortcut_icon.png)
 
 ## Launch
 
 ### [`launch.py`](./launch.py)
 This is the launch script. Include the config file path in [`launch.py`](./launch.py) before running. 
+
 ![launch_config_line](github_pics/launch_config_line.png)
 
 ### [`config.toml`](./config.toml)
