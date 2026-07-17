@@ -13,7 +13,6 @@ config_path = r"    PATH HERE    "
 system = platform.system()
 
 def getch(): 
-    nonlocal system
     if system == 'Windows': 
         import msvcrt
         return msvcrt.getwch()
@@ -61,8 +60,6 @@ def replace_file(path, replacement_dict, mode = None):
     shutil.copy(replace_path, path)
 
 def link_folder(sympath, link_dict, mode = None): 
-    nonlocal system
-    
     if os.path.exists(sympath): 
         os.remove(sympath)
     target_path = link_dict['target_path']
