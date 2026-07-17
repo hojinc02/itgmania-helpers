@@ -12,7 +12,7 @@ path = ' ... ITGmania.exe'
 [[files]]
 path = ' ... AppData\Roaming\ITGmania\Save\Preferences.ini'
 [files.settings]
-FullscreenIsBorderlessWindow = "1"
+FullscreenIsBorderlessWindow = "1"  # You can put settings that don't save normally too
 
 [[files]]  
 path = ' ... AppData\Roaming\ITGmania\Themes\Simply Love\Scripts\SL_Init.lua'
