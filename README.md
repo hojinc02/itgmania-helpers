@@ -2,6 +2,7 @@
 
 ## Setup
 - Download repo as zip
+
 ![repo_zip](github_pics/github_zip.png)
 - Install Python >3.11
     - Check version with `python --version`
@@ -25,7 +26,7 @@ All of your configuration information lives [here](./config.toml). Check the com
 - The mode selected at launch will automatically change which settings and/or song folder is used! 
 
 ## Assets
-The timing scripts for DDR and ITG mode are in [`Assets/Themes/Simply Love/Scripts`](./Assets/Themes/Simply Love/Scripts). You can put these in your personal `AppData/Roaming/ITGmania` folder if you're on Windows or wherever the real game is installed in. 
+The timing scripts for DDR and ITG mode are in `Assets/Themes/Simply Love/Scripts`. You can put these in your personal `AppData/Roaming/ITGmania` folder if you're on Windows or wherever the real game is installed in. 
 
 ## Notes
 I have not tested this outside of Windows so if there are issues, feel free to send them through github!
