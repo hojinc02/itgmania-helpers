@@ -1,4 +1,5 @@
 # ITGmania Helpers
+Launch scripts and assets for quality of life. 
 
 ## Setup
 - Download repo as zip
