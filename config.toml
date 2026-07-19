@@ -45,16 +45,14 @@ target_path = 'C:\Users\Hojin\Documents\StepmaniaAssets\Songs\{mode}'
 #path = 'Stats.xml'
 #dir = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\LocalProfiles'
 #[files.matchreplace]
-#until = '</GeneralData>'  # Read file until. Optional
 #[[files.matchreplace.list]]  # Add more of these to regex match replace more things
-#match = '(?s)<DefaultModifiers>(.+?)</DefaultModifiers>'
+#match = '(?s)<DefaultModifiers>(.*?)</DefaultModifiers>'
 #replace = '<DefaultModifiers></DefaultModifiers>'
 
 #[[files]]
 #path = 'Casual-Stats.xml'
 #dir = 'C:\Users\Hojin\AppData\Roaming\ITGmania\Save\LocalProfiles'
 #[files.matchreplace]
-#until = '</GeneralData>'
 #[[files.matchreplace.list]]
-#match = '(?s)<DefaultModifiers>(.+?)</DefaultModifiers>'
+#match = '(?s)<DefaultModifiers>(.*?)</DefaultModifiers>'
 #replace = '<DefaultModifiers></DefaultModifiers>'
