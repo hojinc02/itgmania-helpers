@@ -17,10 +17,12 @@ def format_path(path: Path, mode: Optional[str] = None) -> Path:
         return Path(str(path).format(mode = mode))
 
 def recursive_mod(dir: Path, action_file: str, action_dict: TOMLtype, 
-                action: Callable, mode: Optional[str] = None) -> None: 
+                action: Callable, mode: Optional[str] = None, level: int = 1) -> None: 
     for filepath in dir.iterdir(): 
         if filepath.is_dir(): 
-            recursive_mod(filepath, action_file, action_dict, action, mode)
+            if level <= 0: 
+                continue
+            recursive_mod(filepath, action_file, action_dict, action, mode, level - 1)
         elif filepath.samefile(dir / action_file): 
             action(filepath, action_dict, mode)
 
